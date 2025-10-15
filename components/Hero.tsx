@@ -6,6 +6,14 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onDownloadRequest }) => {
+  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center text-center md:text-left py-20">
       <div className="max-w-3xl">
@@ -27,6 +35,7 @@ const Hero: React.FC<HeroProps> = ({ onDownloadRequest }) => {
           </button>
           <a
             href="#contact"
+            onClick={handleScrollToContact}
             className="bg-slate-700 text-slate-200 font-semibold px-8 py-3 rounded-md hover:bg-slate-600 transition-all transform hover:scale-105"
           >
             Get In Touch
